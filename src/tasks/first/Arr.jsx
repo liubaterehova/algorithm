@@ -1,121 +1,132 @@
-import React, {Component} from 'react';
-import { Table, Divider, Tag } from 'antd';
-import arrayProcessingTool from "./func"
-
+import React, { Component } from "react";
+import { Table, Divider, Tag } from "antd";
+import arrayProcessingTool from "./func";
+const FIRST_ARRAY = [-1, 2, 3, -9];
+const SECOND_ARRAY = [2, -1, 2, 3, -9];
+const THIRD_ARRAY = [-1, 2, 3, -9, 11];
+const FORTH_ARRAY = [-2, -1, 1, 2];
+const FIFTH_ARRAY = [100, -9, 2, -3, 5];
+const SIX_ARRAY = [1, 2, 3];
+const SEVEN_ARRAY = [-1, -2, -3];
 
 export default class Arr extends Component {
-    
-     render() {
-   
-        const columns = [
-            {
-              title: 'Array',
-              dataIndex: 'name',
-              key: 'name',
-              render: text => <a>{text}</a>,
-            },
-            {
-              title: 'Min number',
-              dataIndex: 'minNumber',
-              key: 'minNumber',
-            },
-            {
-              title: 'Max number',
-              dataIndex: 'max',
-              key: 'max',
-            },
-            {
-                title: 'Sub sum',
-                dataIndex: 'sub',
-                key: 'sub',
-              },
-              {
-                title: 'Mediana',
-                dataIndex: 'mediana',
-                key: 'mediana',
-              },
-              {
-                title: 'NumberOfUpperSequence',
-                dataIndex: 'numberOfUpper',
-                key: 'umberOfUpper',
-              },
-            
-          ];
-          
-          const data = [
-            {
-              key: '1',
-              name: '[-1, 2, 3, -9]',
-              sub: arrayProcessingTool.getMaxSubSum([-1, 2, 3, -9]),
-              minNumber: arrayProcessingTool.findMin([-1, 2, 3, -9]),
-              max:  arrayProcessingTool.findMax([-1, 2, 3, -9]),
-              mediana:arrayProcessingTool.findMediana([-1, 2, 3, -9]),
-              numberOfUpper:arrayProcessingTool. findNumberOfUpperSequence([-1, 2, 3, -9]),
-            },
-            {
-              key: '2',
-              name: '[2, -1, 2, 3, -9]',
-              sub:arrayProcessingTool.getMaxSubSum([2, -1, 2, 3, -9]),
-              minNumber: arrayProcessingTool.findMin([2, -1, 2, 3, -9]),
-              max:arrayProcessingTool.findMax([2, -1, 2, 3, -9]),
-              mediana:arrayProcessingTool.findMediana([2, -1, 2, 3, -9]),
-              numberOfUpper:arrayProcessingTool.findNumberOfUpperSequence([2, -1, 2, 3, -9]),
-            },
-            {
-              key: '3',
-              name: '[-1, 2, 3, -9, 11] ',
-              sub:arrayProcessingTool.getMaxSubSum([-1, 2, 3, -9, 11]),
-              minNumber: arrayProcessingTool.findMin([-1, 2, 3, -9, 11]),
-              max: arrayProcessingTool.findMax([-1, 2, 3, -9, 11]),
-              mediana:arrayProcessingTool.findMediana([-1, 2, 3, -9, 11]),
-              numberOfUpper:arrayProcessingTool.findNumberOfUpperSequence([-1, 2, 3, -9, 11]),
-            },
-            {
-                key: '4',
-                name:'[-2, -1, 1, 2]',
-                sub:arrayProcessingTool.getMaxSubSum([-2, -1, 1, 2]),
-                minNumber: arrayProcessingTool.findMin([-2, -1, 1, 2]),
-                age: arrayProcessingTool.findMin([-2, -1, 1, 2]),
-                max: arrayProcessingTool.findMax([-2, -1, 1, 2]),
-                mediana:arrayProcessingTool.findMediana([-2, -1, 1, 2]),
-                numberOfUpper:arrayProcessingTool.findNumberOfUpperSequence([-2, -1, 1, 2]),
-              },
-              {
-                key: '5',
-                name:'[100, -9, 2, -3, 5]',
-                sub:arrayProcessingTool.getMaxSubSum([100, -9, 2, -3, 5]),
-                minNumber: arrayProcessingTool.findMin([100, -9, 2, -3, 5]),
-                age: arrayProcessingTool.findMin([100, -9, 2, -3, 5]),
-                max:arrayProcessingTool.findMax([100, -9, 2, -3, 5]),
-                tags: ['nice', 'developer'],
-                mediana:arrayProcessingTool.findMediana([100, -9, 2, -3, 5]),
-                numberOfUpper:arrayProcessingTool.findNumberOfUpperSequence([100, -9, 2, -3, 5]),
-              },
-              {
-                key: '6',
-                name:'[1, 2, 3]',
-                sub:arrayProcessingTool.getMaxSubSum([1, 2, 3]),
-                minNumber:arrayProcessingTool.findMin([1, 2, 3]),
-                age: arrayProcessingTool.findMin([1, 2, 3]),
-                max: arrayProcessingTool.findMax([1,2,3]),
-                mediana:  arrayProcessingTool.findMediana([1,2,3]),
-                numberOfUpper:  arrayProcessingTool.findNumberOfUpperSequence([1,2,3]),
-              },
-              {
-                key: '7',
-                name:'[-1, -2, -3]',
-                sub:arrayProcessingTool.getMaxSubSum([-1, -2, -3]),
-                minNumber: arrayProcessingTool.findMin([-1, -2, -3]),
-                age: arrayProcessingTool.findMin([-1, -2, -3]),
-                max: arrayProcessingTool.findMax([-1, -2, -3]),
-                mediana:arrayProcessingTool.findMediana([-1, -2, -3]),
-                numberOfUpper:arrayProcessingTool.findNumberOfUpperSequence([-1, -2, -3]),
-              },
-          ];
-          
-    return (
-<Table columns={columns} dataSource={data} />
-    )
+  render() {
+    const columns = [
+      {
+        title: "Array",
+        dataIndex: "name",
+        key: "name",
+        render: text => <a>{text}</a>
+      },
+      {
+        title: "Min number",
+        dataIndex: "minNumber",
+        key: "minNumber"
+      },
+      {
+        title: "Max number",
+        dataIndex: "max",
+        key: "max"
+      },
+      {
+        title: "Sub sum",
+        dataIndex: "sub",
+        key: "sub"
+      },
+      {
+        title: "Mediana",
+        dataIndex: "mediana",
+        key: "mediana"
+      },
+      {
+        title: "NumberOfUpperSequence",
+        dataIndex: "numberOfUpper",
+        key: "umberOfUpper"
+      }
+    ];
 
-}
+    const data = [
+      {
+        key: "1",
+        name: `${FIRST_ARRAY}`,
+        sub: arrayProcessingTool.getMaxSubSum(FIRST_ARRAY),
+        minNumber: arrayProcessingTool.findMin(FIRST_ARRAY),
+        max: arrayProcessingTool.findMax(FIRST_ARRAY),
+        mediana: arrayProcessingTool.findMediana(FIRST_ARRAY),
+        numberOfUpper: arrayProcessingTool.findNumberOfUpperSequence(
+          FIRST_ARRAY
+        )
+      },
+      {
+        key: "2",
+        name: `${SECOND_ARRAY}`,
+        sub: arrayProcessingTool.getMaxSubSum(SECOND_ARRAY),
+        minNumber: arrayProcessingTool.findMin(SECOND_ARRAY),
+        max: arrayProcessingTool.findMax(SECOND_ARRAY),
+        mediana: arrayProcessingTool.findMediana(SECOND_ARRAY),
+        numberOfUpper: arrayProcessingTool.findNumberOfUpperSequence(
+          SECOND_ARRAY
+        )
+      },
+      {
+        key: "3",
+        name: `${THIRD_ARRAY}`,
+        sub: arrayProcessingTool.getMaxSubSum(THIRD_ARRAY),
+        minNumber: arrayProcessingTool.findMin(THIRD_ARRAY),
+        max: arrayProcessingTool.findMax(THIRD_ARRAY),
+        mediana: arrayProcessingTool.findMediana(THIRD_ARRAY),
+        numberOfUpper: arrayProcessingTool.findNumberOfUpperSequence(
+          THIRD_ARRAY
+        )
+      },
+      {
+        key: "4",
+        name: `${FORTH_ARRAY}`,
+        sub: arrayProcessingTool.getMaxSubSum(FORTH_ARRAY),
+        minNumber: arrayProcessingTool.findMin(FORTH_ARRAY),
+        age: arrayProcessingTool.findMin(FORTH_ARRAY),
+        max: arrayProcessingTool.findMax(FORTH_ARRAY),
+        mediana: arrayProcessingTool.findMediana(FORTH_ARRAY),
+        numberOfUpper: arrayProcessingTool.findNumberOfUpperSequence(
+          FORTH_ARRAY
+        )
+      },
+      {
+        key: "5",
+        name: `${FIFTH_ARRAY}`,
+        sub: arrayProcessingTool.getMaxSubSum(FIFTH_ARRAY),
+        minNumber: arrayProcessingTool.findMin(FIFTH_ARRAY),
+        age: arrayProcessingTool.findMin(FIFTH_ARRAY),
+        max: arrayProcessingTool.findMax(FIFTH_ARRAY),
+        mediana: arrayProcessingTool.findMediana(FIFTH_ARRAY),
+        numberOfUpper: arrayProcessingTool.findNumberOfUpperSequence(
+          FIFTH_ARRAY
+        )
+      },
+      {
+        key: "6",
+        name: `${SIX_ARRAY}`,
+        sub: arrayProcessingTool.getMaxSubSum(SIX_ARRAY),
+        minNumber: arrayProcessingTool.findMin(SIX_ARRAY),
+        age: arrayProcessingTool.findMin(SIX_ARRAY),
+        max: arrayProcessingTool.findMax(SIX_ARRAY),
+        mediana: arrayProcessingTool.findMediana(SIX_ARRAY),
+        numberOfUpper: arrayProcessingTool.findNumberOfUpperSequence(SIX_ARRAY)
+      },
+      {
+        key: "7",
+        name: `${SEVEN_ARRAY}`,
+        sub: arrayProcessingTool.getMaxSubSum(SEVEN_ARRAY),
+        minNumber: arrayProcessingTool.findMin(SEVEN_ARRAY),
+        age: arrayProcessingTool.findMin(SEVEN_ARRAY),
+        max: arrayProcessingTool.findMax(SEVEN_ARRAY),
+        mediana: arrayProcessingTool.findMediana(SEVEN_ARRAY),
+        numberOfUpper: arrayProcessingTool.findNumberOfUpperSequence(
+          SEVEN_ARRAY
+        )
+      }
+    ];
+
+    return <Table columns={columns} dataSource={data} />;
+  }
 }

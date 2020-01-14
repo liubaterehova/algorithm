@@ -4,10 +4,11 @@ import "./App.css";
 import "antd/dist/antd.css";
 import Arr from "../src/tasks/first/Arr";
 import FormatDate from "../src/tasks/second/func";
+import Data from "../src/tasks/second/Data";
 function App() {
   return (
     <div className="App">
-      <Arr></Arr>
+      <Data></Data>
     </div>
   );
 }

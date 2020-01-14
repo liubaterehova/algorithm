@@ -1,58 +1,83 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
+const FormatDate = {
+  monthes: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
 
-export default class FormatDate extends Component {
-     monthes = ['January', 'February', 'March', 'April', 'May','June', 'July','August','September', 'October', 'November', 'December'];
-    formatFromString = (str) =>
-        str[0] + str[1] + '.' + str[2] + str[3] + '.' + str.slice(4);
+  formatFromString: function(str) {
+    return str[0] + str[1] + "." + str[2] + str[3] + "." + str.slice(4);
+  },
 
-    formatFromStringToMonth = (str) => {
-        
-        let numberofMonth = str[2] + str[3];
-        if (str[2] == 0) {
-            numberofMonth = str[3];
+  formatFromStringToMonth: function(str) {
+    let numberofMonth = str[2] + str[3];
+    if (str[2] == 0) {
+      numberofMonth = str[3];
+    }
+    return (
+      str[0] +
+      str[1] +
+      " " +
+      this.monthes[numberofMonth - 1] +
+      " " +
+      str.slice(4)
+    );
+  },
+  formatInExample: function(str) {
+    let numberofMonth = str[4] + str[5];
+    if (str[4] == 0) {
+      numberofMonth = str[5];
+    }
+    return (
+      str[6] +
+      str[7] +
+      " " +
+      this.monthes[numberofMonth - 1] +
+      " " +
+      str.slice(0, 4)
+    );
+  },
+
+  formatWithHyphen: function(str) {
+    let numberofMonth = str[4] + str[5];
+    return numberofMonth + "-" + str[6] + str[7] + "-" + str.slice(0, 4);
+  },
+
+  formatDateFromHyphen: function(str, ex) {
+    return {
+      fromNow: function() {
+        let now = new Date();
+        let day = str[6] + str[7];
+        let month = str[4] + str[5] - 1;
+        let year = str.slice(0, 4);
+        let date = new Date(year, month, day);
+        const DAY = 1000 * 60 * 60 * 24;
+        const MONTH = DAY * 31;
+        const YEAR = MONTH * 12;
+        let duration = now - date;
+        if (duration < DAY) {
+          return "less than a day ago";
         }
-        return  str[0] + str[1] + ' ' + this.monthes[numberofMonth - 1] + ' ' + str.slice(4);
-
-    }
-    formatInExample = (str, ex) => {
-        if (ex === 'YYYYMMDD'){
-        let numberofMonth = str[4] + str[5];
-        if (str[4] == 0) {
-            numberofMonth = str[5];
+        if (duration < MONTH) {
+          return `less than ${Math.floor(duration / DAY)} days ago`;
         }
-        return str[6] + str[7] + ' ' + this.monthes[numberofMonth - 1] +' '+ str.slice(0, 4)
-    }
-    }
+        if (duration < YEAR) {
+          return `less than ${Math.floor(duration / MONTH)} monthes ago`;
+        } else return `${Math.ceil(duration / YEAR)} years ago`;
+      }
+    };
+  }
+};
 
-    formatWithHyphen = (str, ex, how) => {
-        if (ex === 'YYYYMMDD' && how == 'MM-DD-YYYY'){
-        let numberofMonth = str[4] + str[5];
-
-        return numberofMonth + '-' +str[6] + str[7] + '-' + str.slice(0, 4);
-    }
-    }
-    formatDateFromHyphen = (str, ex) => {
-        if (ex ==='YYYY-MM-DD') {
-            return {
-                fromNow: function () {
-                    let now = new Date();
-                    let date = new Date(str);
-                    let duration = now - date;
-                    if (duration < 1000 * 60 * 60*24) {
-                        return 'less than a day ago';
-                    } if (duration < 1000 * 60 * 60 * 24 * 31){
-                        return `less than duration.getMonth()`
-                    }
-                }
-            }
-        }
-    }
-
-    render() {
-
-    return ( 
-            <div> { this.formatWithHyphen('20130431', 'YYYYMMDD', 'MM-DD-YYYY')} </div>
-            )
-    }
-}
+export default FormatDate;

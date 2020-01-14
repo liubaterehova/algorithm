@@ -41,7 +41,7 @@ export default class Arr extends Component {
       {
         title: "NumberOfUpperSequence",
         dataIndex: "numberOfUpper",
-        key: "umberOfUpper"
+        key: "numberOfUpper"
       }
     ];
 

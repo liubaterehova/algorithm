@@ -20,7 +20,7 @@ export default class Data extends Component {
           <Col span={4} className="colfirst">
             Example: 31102011
           </Col>
-          <Col span={3}>Format: YYYYMMDD</Col>
+          <Col span={3}>Format: DDMMYYYY</Col>
           <Col span={6}>
             <Search
               onSearch={value =>
@@ -36,7 +36,7 @@ export default class Data extends Component {
           <Col span={4} className="colfirst">
             Example: 31102011
           </Col>
-          <Col span={3}>Format: YYYYMMDD</Col>
+          <Col span={3}>Format: DDMMYYYY</Col>
           <Col span={6}>
             <Search
               onSearch={value =>

@@ -8,7 +8,7 @@ import TextFormatter from "./tasks/third/TextFormatter";
 function App() {
   return (
     <div className="App">
-      <FormatDate />
+      <Arr />
     </div>
   );
 }

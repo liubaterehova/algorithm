@@ -18,8 +18,7 @@ export default class Arr extends Component {
       {
         title: "Array",
         dataIndex: "name",
-        key: "name",
-        render: text => <a>{text}</a>
+        key: "name"
       },
       {
         title: "Min number",

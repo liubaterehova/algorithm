@@ -99,7 +99,7 @@ const arrayProcessingTool = {
 
     const average = sum / copyArr.length;
 
-    if (copyArr.length % 2 == 0) {
+    if (copyArr.length % 2 === 0) {
       const leftIndex = copyArr.length / 2 - 1;
       const rightIndex = copyArr.length / 2;
       const rightNumber = newArr[rightIndex];
@@ -130,7 +130,7 @@ const arrayProcessingTool = {
     }
 
     return maxNumberOfUpperSequence;
-  }
+  },
 };
 
 export default arrayProcessingTool;

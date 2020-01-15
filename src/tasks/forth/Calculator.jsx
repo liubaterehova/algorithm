@@ -36,7 +36,7 @@ export default class Calculator extends Component {
           color="primary"
           onClick={e => {
             this.setState({ inputValue: "" });
-            return typeOfOperation(this.state.inputValue);
+            typeOfOperation(this.state.inputValue);
           }}
         >
           COUNT

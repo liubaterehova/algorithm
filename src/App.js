@@ -5,10 +5,11 @@ import Arr from "../src/tasks/first/Arr";
 import Data from "../src/tasks/second/Data";
 import TextFormatter from "./tasks/third/TextFormatter";
 import Calculator from "./tasks/forth/Calculator";
+import Converter from "./tasks/six/Converter";
 function App() {
   return (
     <div className="App">
-      <Calculator> </Calculator>{" "}
+      <Converter> </Converter>{" "}
     </div>
   );
 }

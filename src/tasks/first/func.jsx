@@ -3,19 +3,6 @@ const arrayProcessingTool = {
     let sum = 0;
     let maxSum = 0;
 
-    // TODO:
-    // for (const i of arr) {
-    //   sum += i;
-
-    //   if (sum < 0) {
-    //     sum = 0;
-    //   }
-
-    //   if (sum >= maxSum) {
-    //     maxSum = sum;
-    //   }
-    // }
-
     arr.forEach((item) => {
       sum += item;
 
@@ -34,10 +21,10 @@ const arrayProcessingTool = {
   getMaxSubSumSecond(arr) {
     let maxSum = 0;
 
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i += 1) {
       let sum = 0;
 
-      for (let k = 0; k < arr.length; k++) {
+      for (let k = 0; k < arr.length; k += 1) {
         sum += arr[k + i];
 
         if (sum >= maxSum) {
@@ -49,49 +36,14 @@ const arrayProcessingTool = {
     return maxSum;
   },
 
-  // TODO:
-  // findMin(arr) {
-  //   let max = +Infinity;
-  //   let min = 0;
-
-  //   for (const i of arr) {
-  //     if (i < max) {
-  //       max = i;
-  //       min = i;
-  //     }
-  //   }
-
-  //   return min;
-  // },
-
   findMin: arr => Math.min(...arr),
-
-  // TODO:
-  // findMax(arr) {
-  //   let max = 0;
-  //   let min = -Infinity;
-
-  //   for (const i of arr) {
-  //     if (i > min) {
-  //       max = i;
-  //       min = i;
-  //     }
-  //   }
-
-  //   return min;
-  // },
 
   findMax: arr => Math.max(...arr),
 
   findMediana(arr) {
     let sum = 0;
-    // const copyArr = arr.slice();
     const copyArr = [...arr];
     const newArr = copyArr.sort((a, b) => a - b);
-
-    // for (const i of copyarr) {
-    //   sum += i;
-    // }
 
     copyArr.forEach(item => {
       sum += item;
@@ -119,7 +71,7 @@ const arrayProcessingTool = {
     let numberOfUpperSequence = 1;
     let maxNumberOfUpperSequence = 1;
 
-    for (let i = 0; i < arr.length - 1; i++) {
+    for (let i = 0; i < arr.length - 1; i += 1) {
       if (arr[i] < arr[i + 1]) {
         numberOfUpperSequence += 1;
 

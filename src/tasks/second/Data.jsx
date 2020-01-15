@@ -1,18 +1,36 @@
-import React, { Component } from "react";
-import { Table, Divider, Tag } from "antd"; // TODO: ??
-import FormatData from "./func";
-import "./index.css";
-import { Row, Col, Input } from "antd";
+import React, { Component } from 'react';
+import { Row, Col, Input } from 'antd';
+import formatData from './func';
+import './index.css';
+
 const { Search } = Input;
 
 export default class Data extends Component {
   state = {
-    first: "",
-    second: "",
-    third: "",
-    forth: "",
-    fifth: ""
+    first: '',
+    second: '',
+    third: '',
+    forth: '',
+    fifth: '',
   };
+
+  onSearchFirst = value => (
+    this.setState({ first: formatData.formatFromString(value) })
+  )
+  onSearchSecond = value => (
+    this.setState({ second: formatData.formatFromStringToMonth(value) })
+  )
+  onSearchThird = value => (
+    this.setState({ third: formatData.formatInExample(value) })
+  )
+  onSearchForth = value => (
+    this.setState({ forth: formatData.formatWithHyphen(value) })
+  )
+  onSearchFifth = value => (
+    this.setState({
+      fifth: formatData.formatDateFromHyphen(value).fromNow(),
+    })
+  )
   render() {
     return (
       <div>
@@ -23,9 +41,7 @@ export default class Data extends Component {
           <Col span={3}>Format: DDMMYYYY</Col>
           <Col span={6}>
             <Search
-              onSearch={value =>
-                this.setState({ first: FormatData.formatFromString(value) })
-              }
+              onSearch={this.onSearchFirst}
               enterButton
             />
           </Col>
@@ -39,11 +55,7 @@ export default class Data extends Component {
           <Col span={3}>Format: DDMMYYYY</Col>
           <Col span={6}>
             <Search
-              onSearch={value =>
-                this.setState({
-                  second: FormatData.formatFromStringToMonth(value)
-                })
-              }
+              onSearch={this.onSearchSecond}
               enterButton
             />
           </Col>
@@ -57,9 +69,7 @@ export default class Data extends Component {
           <Col span={3}>Format: YYYYMMDD</Col>
           <Col span={6}>
             <Search
-              onSearch={value =>
-                this.setState({ third: FormatData.formatInExample(value) })
-              }
+              onSearch={this.onSearchThird}
               enterButton
             />
           </Col>
@@ -68,15 +78,13 @@ export default class Data extends Component {
 
         <Row type="flex">
           <Col span={4} className="colfirst">
-            {" "}
+            {' '}
             Example: 20130430, YYYYMMDD, MM-DD-YYYY
           </Col>
           <Col span={3}>Format: YYYYMMDD</Col>
           <Col span={6}>
             <Search
-              onSearch={value =>
-                this.setState({ forth: FormatData.formatWithHyphen(value) })
-              }
+              onSearch={this.onSearchForth}
               enterButton
             />
           </Col>
@@ -90,11 +98,7 @@ export default class Data extends Component {
           <Col span={3}>Format: YYYYMMDD</Col>
           <Col span={6}>
             <Search
-              onSearch={value =>
-                this.setState({
-                  fifth: FormatData.formatDateFromHyphen(value).fromNow()
-                })
-              }
+              onSearch={this.onSearchFifth}
               enterButton
             />
           </Col>

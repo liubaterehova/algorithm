@@ -1,6 +1,4 @@
-import React, { Component } from 'react'; // TODO: React is needed here ?
-
-const FormatDate = { // TODO: Only classes are capitalized in JS
+const formatDate = { // TODO: Only classes are capitalized in JS
   monthes: [
     'January',
     'February',
@@ -16,18 +14,13 @@ const FormatDate = { // TODO: Only classes are capitalized in JS
     'December',
   ],
 
-  // formatFromString: function(str) {
-  //   // return str[0] + str[1] + "." + str[2] + str[3] + "." + str.slice(4);
-  // },
-
-  // TODO: Example
   formatFromString: str =>
     `${str[0]}${str[1]}.${str[2]}${str[3]}.${str.slice(4)}`,
 
   formatFromStringToMonth(str) {
     let numberofMonth = str[2] + str[3];
 
-    if (str[2] == 0) {
+    if (str[2] === 0) {
       numberofMonth = str[3];
     }
 
@@ -43,7 +36,7 @@ const FormatDate = { // TODO: Only classes are capitalized in JS
   formatInExample(str) {
     let numberofMonth = str[4] + str[5];
 
-    if (str[4] == 0) {
+    if (str[4] === 0) {
       numberofMonth = str[5];
     }
 
@@ -63,7 +56,7 @@ const FormatDate = { // TODO: Only classes are capitalized in JS
     return `${numberofMonth}-${str[6]}${str[7]}-${str.slice(0, 4)}`;
   },
 
-  formatDateFromHyphen(str, ex) {
+  formatDateFromHyphen(str) {
     return {
       fromNow() {
         const now = new Date();
@@ -94,4 +87,4 @@ const FormatDate = { // TODO: Only classes are capitalized in JS
   },
 };
 
-export default FormatDate;
+export default formatDate;

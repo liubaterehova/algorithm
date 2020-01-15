@@ -1,38 +1,78 @@
-import React, { Component } from "react";
-import { typeFormat, allCheck, TYPE_FORMATS } from "./func";
-import { Menu, Dropdown, Input, Row, Col } from "antd";
+import React, { Component } from 'react';
+import {
+  Menu, Dropdown, Input, Row, Col,
+} from 'antd';
+import { typeFormat, allCheck, TYPE_FORMATS } from './func'; // TODO: Same
+
 const { TextArea } = Input;
 
 function formatToName(key) {
   switch (key) {
     case TYPE_FORMATS.NONE:
-      return "переносов нет";
+      return 'переносов нет';
     case TYPE_FORMATS.SYMBOL:
-      return "перенос по символу";
+      return 'перенос по символу';
     case TYPE_FORMATS.SENTENCE:
-      return "перенос по предложению";
+      return 'перенос по предложению';
     case TYPE_FORMATS.WORD:
-      return "перенос по слову";
+      return 'перенос по слову';
     default:
-      return "select";
+      return 'select';
   }
 }
+
 export default class TextFormatter extends Component {
   state = {
-    inputValue: "",
-    format: "select",
+    inputValue: '',
+    format: 'select',
     maxLength: null,
     maxNumStr: null,
-    res: ""
+    res: '', // TODO: Is it means result ?,
+  };
+
+  handleChange = ({ target: { value: inputValue } }) => {
+    // const inputValue = e.target.value; TODO:
+    this.setState({ inputValue }); // this.state.inputValue не поменяется
+    this.setState(prevState => ({
+      res: allCheck({
+        ...prevState,
+        inputValue,
+      }),
+    }));
+    // this.setState({
+    //   res: allCheck({
+    //     ...this.state, // TODO: It's not good
+    //     inputValue,
+    //   }),
+    // });
   };
 
   render() {
+    // TODO: Should we init handlers in render ?)
+    // const handleChange = e => {
+    //   const inputValue = e.target.value;
+    //   this.setState({ inputValue }); // this.state.inputValue не поменяется
+    //   this.setState(prevState => ({
+    //     res: allCheck({
+    //       ...prevState,
+    //       inputValue,
+    //     }),
+    //   }));
+    //   // this.setState({
+    //   //   res: allCheck({
+    //   //     ...this.state, // TODO: It's not good
+    //   //     inputValue,
+    //   //   }),
+    //   // });
+    // };
+
+    // TODO:
     const menu = (
       <Menu
         onClick={e => {
           this.setState({
             format: e.key,
-            res: allCheck({ ...this.state, format: e.key })
+            res: allCheck({ ...this.state, format: e.key }), // TODO: Same
           });
           // const res = typeFormat(this.state.inputValue, e.key);
           // this.setState({ inputValue: res,  });
@@ -46,26 +86,17 @@ export default class TextFormatter extends Component {
         <Menu.Item key={TYPE_FORMATS.WORD}>перенос по слову</Menu.Item>
       </Menu>
     );
-    const onChange = e => {
-      const inputValue = e.target.value;
-      this.setState({ inputValue: inputValue }); // this.state.inputValue не поменяется
-      this.setState({
-        res: allCheck({
-          ...this.state,
-          inputValue: inputValue
-        })
-      });
-    };
+
     return (
       <div>
         <Row type="flex">
           <Col span={6}>
             <TextArea
               placeholder="input"
-              onChange={onChange}
+              onChange={this.handleChange}
               value={this.state.inputValue}
               rows={4}
-            ></TextArea>
+            />
           </Col>
           <Col span={12}>
             <Row type="flex">
@@ -82,12 +113,12 @@ export default class TextFormatter extends Component {
                     this.setState({
                       maxLength: value.target.value,
                       res: allCheck({
-                        ...this.state,
-                        maxLength: value.target.value
-                      })
+                        ...this.state, // TODO: Same
+                        maxLength: value.target.value,
+                      }),
                     });
                   }}
-                ></Input>
+                />
               </Col>
             </Row>
             <Row type="flex">
@@ -99,18 +130,18 @@ export default class TextFormatter extends Component {
                     this.setState({
                       maxNumStr: value.target.value,
                       res: allCheck({
-                        ...this.state,
-                        maxNumStr: value.target.value
-                      })
+                        ...this.state, // TODO: Same
+                        maxNumStr: value.target.value,
+                      }),
                     });
                   }}
-                ></Input>
+                />
               </Col>
             </Row>
             <Row type="flex">
               <Col span={12}>Type of formatting:</Col>
               <Col span={10}>
-                <Dropdown overlay={menu} trigger={["click"]}>
+                <Dropdown overlay={menu} trigger={['click']}>
                   <Col>
                     <Input
                       size="small"
@@ -126,7 +157,7 @@ export default class TextFormatter extends Component {
               placeholder="Result:"
               value={this.state.res}
               rows={4}
-            ></TextArea>
+            />
           </Col>
         </Row>
       </div>

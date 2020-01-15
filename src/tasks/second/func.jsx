@@ -15,6 +15,8 @@ export default class FormatDate extends Component {
     "November",
     "December"
   ];
+
+  // Should be write with `...${}...`
   formatFromString = str =>
     str[0] + str[1] + "." + str[2] + str[3] + "." + str.slice(4);
 
@@ -23,16 +25,20 @@ export default class FormatDate extends Component {
     if (str[2] === 0) {
       numberofMonth = str[3];
     }
-    return (
-      str[0] +
-      str[1] +
-      " " +
-      this.monthes[numberofMonth - 1] +
-      " " +
-      str.slice(4)
-    );
+
+    // TODO: Same
+    // return (
+    //   str[0] +
+    //   str[1] +
+    //   " " +
+    //   this.monthes[numberofMonth - 1] +
+    //   " " +
+    //   str.slice(4)
+    // );
+
+    return `${str[0] + str[1]}${this.monthes[numberofMonth - 1]}${str.slice(4)}`;
   };
-  formatInExample = (str, ex) => {
+  formatInExample = (str, ex /* TODO: What means ex ? */) => {
     if (ex === "YYYYMMDD") {
       let numberofMonth = str[4] + str[5];
       if (str[4] === 0) {
@@ -51,7 +57,7 @@ export default class FormatDate extends Component {
 
   formatWithHyphen = (str, ex, how) => {
     if (ex === "YYYYMMDD" && how === "MM-DD-YYYY") {
-      let numberofMonth = str[4] + str[5];
+      let numberofMonth = str[4] + str[5]; // TODO: should be constant
 
       return numberofMonth + "-" + str[6] + str[7] + "-" + str.slice(0, 4);
     }

@@ -1,25 +1,25 @@
-function numbersFromStr(str) {
-  let arrofStr = str.split("+");
+function numbersFromStr(str, operator) {
+  let arrofStr = str.split(operator);
   let firstNumber = Number(arrofStr[0]);
   let secondNumber = Number(arrofStr[1]);
   return { firstNumber, secondNumber };
 }
 
 const calculator = {
-  sum: function(str) {
-    const { firstNumber, secondNumber } = numbersFromStr(str);
+  sum: function(str, operator) {
+    const { firstNumber, secondNumber } = numbersFromStr(str, operator);
     return firstNumber + secondNumber;
   },
-  minus: function(str) {
-    const { firstNumber, secondNumber } = numbersFromStr(str);
+  minus: function(str, operator) {
+    const { firstNumber, secondNumber } = numbersFromStr(str, operator);
     return firstNumber - secondNumber;
   },
-  multiply: function(str) {
-    const { firstNumber, secondNumber } = numbersFromStr(str);
+  multiply: function(str, operator) {
+    const { firstNumber, secondNumber } = numbersFromStr(str, operator);
     return firstNumber * secondNumber;
   },
-  divide: function(str) {
-    const { firstNumber, secondNumber } = numbersFromStr(str);
+  divide: function(str, operator) {
+    const { firstNumber, secondNumber } = numbersFromStr(str, operator);
     return firstNumber / secondNumber;
   }
 };

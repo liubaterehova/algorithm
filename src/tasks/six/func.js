@@ -1,4 +1,4 @@
-convertFrom2 = (number) => {
+const convertFrom2 = (number) => {
   if (number.includes('0') && number.includes('1')) {
     let res = 0;
     const arrOfNum = number.split('');
@@ -10,17 +10,31 @@ convertFrom2 = (number) => {
   }
 
   return 'mistake';
-}
+};
+
+const convertFrom10 = (number) => {
+  let str = '';
+  let copyNum = number;
+
+  while (copyNum !== 1) {
+    if (copyNum % 2 === 0) {
+      copyNum /= 2;
+      str += '0';
+    } else {
+      copyNum = Math.floor(copyNum / 2);
+      str += '1';
+    }
+  }
+
+  str += '1';
+  const newStr = str.split('');
+
+  return newStr.reverse().join('');
+};
 
 const converter = {
-    convertFrom2To10: number => {
-        let res = 0;
-        let arrOfNum = number.split("");
-        for (let i = 0; i < arrOfNum.length; i++) {
-            res += arrOfNum[i] * 2 ** i;
-        }
-        return res;
-    }
+  convertFrom2To10: (number) => convertFrom2(number),
+  convertFrom10To2: (number) => convertFrom10(number),
 };
 
 export default converter;

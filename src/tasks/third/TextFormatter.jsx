@@ -27,13 +27,10 @@ export default class TextFormatter extends Component {
     format: 'select',
     maxLength: null,
     maxNumStr: null,
-    res: '', // TODO: Is it means result ?,
+    res: '',
   };
 
   handleChange = ({ target: { value: inputValue } }) => {
-    // const inputValue = e.target.value; TODO:
-    // this.state.inputValue не поменяется
-
     this.setState(prevState => ({
       inputValue,
       res: allCheck({
@@ -41,23 +38,12 @@ export default class TextFormatter extends Component {
         inputValue,
       }),
     }));
-    // this.setState({
-    //   res: allCheck({
-    //     ...this.state, // TODO: It's not good
-    //     inputValue,
-    //   }),
-    // });
   };
   handleChangeMaxLength = ({ target: { value } }) => {
-    // let str = maxLength(
-    //   this.state.inputValue,
-    //   value.target.value
-    // );
-
     this.setState((prevState) => ({
       maxLength: value,
       res: allCheck({
-        ...prevState, // TODO: Same
+        ...prevState,
         maxLength: value,
       }),
     }));
@@ -67,7 +53,7 @@ export default class TextFormatter extends Component {
     this.setState((prevState) => ({
       maxNumStr: value,
       res: allCheck({
-        ...prevState, // TODO: Same
+        ...prevState,
         maxNumStr: value,
       }),
     }));
@@ -84,11 +70,6 @@ export default class TextFormatter extends Component {
         }));
       }}
     >
-      {/* Minethis.setState({
-        //   res: allCheck({ ...this.state, format: e.key }), // TODO: Same
-        // })Mine;
-        // const res = typeFormat(this.state.inputValue, e.key);
-       // this.setState({ inputValue: res,  }); */}
       <Menu.Item key={TYPE_FORMATS.NONE}>переносов нет</Menu.Item>
       <Menu.Item key={TYPE_FORMATS.SYMBOL}>перенос по символу</Menu.Item>
       <Menu.Item key={TYPE_FORMATS.SENTENCE}>
@@ -98,26 +79,6 @@ export default class TextFormatter extends Component {
     </Menu>
   );
   render() {
-    // TODO: Should we init handlers in render ?)
-    // const handleChange = e => {
-    //   const inputValue = e.target.value;
-    //   this.setState({ inputValue }); // this.state.inputValue не поменяется
-    //   this.setState(prevState => ({
-    //     res: allCheck({
-    //       ...prevState,
-    //       inputValue,
-    //     }),
-    //   }));
-    //   // this.setState({
-    //   //   res: allCheck({
-    //   //     ...this.state, // TODO: It's not good
-    //   //     inputValue,
-    //   //   }),
-    //   // });
-    // };
-
-    // TODO:
-
     return (
       <div>
         <Row type="flex">

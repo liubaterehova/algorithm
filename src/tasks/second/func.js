@@ -1,4 +1,4 @@
-const formatDate = { // TODO: Only classes are capitalized in JS
+const formatDate = {
   monthes: [
     'January',
     'February',

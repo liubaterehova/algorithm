@@ -1,85 +1,80 @@
 const arrayProcessingTool = {
-  getMaxSubSum: function(arr) {
+  getMaxSubSum(arr) {
     let sum = 0;
     let maxSum = 0;
 
-    for (let i of arr) {
-      sum += i;
+    arr.forEach((item) => {
+      sum += item;
+
       if (sum < 0) {
         sum = 0;
       }
+
       if (sum >= maxSum) {
         maxSum = sum;
       }
-    }
+    });
+
     return maxSum;
   },
 
-  getMaxSubSumSecond: function(arr) {
+  getMaxSubSumSecond(arr) {
     let maxSum = 0;
 
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i += 1) {
       let sum = 0;
-      for (let k = 0; k < arr.length; k++) {
+
+      for (let k = 0; k < arr.length; k += 1) {
         sum += arr[k + i];
+
         if (sum >= maxSum) {
           maxSum = sum;
         }
       }
     }
+
     return maxSum;
   },
 
-  findMin: function(arr) {
-    let max = +Infinity;
-    let min = 0;
-    for (let i of arr) {
-      if (i < max) {
-        max = i;
-        min = i;
-      }
-    }
-    return min;
-  },
+  findMin: arr => Math.min(...arr),
 
-  findMax: function(arr) {
-    let max = 0;
-    let min = -Infinity;
-    for (let i of arr) {
-      if (i > min) {
-        max = i;
-        min = i;
-      }
-    }
-    return min;
-  },
+  findMax: arr => Math.max(...arr),
 
-  findMediana: function(arr) {
+  findMediana(arr) {
     let sum = 0;
-    let copyarr = arr.slice();
-    let newArr = copyarr.sort((a, b) => a - b);
-    for (let i of copyarr) {
-      sum += i;
-    }
-    let average = sum / copyarr.length;
-    if (copyarr.length % 2 == 0) {
-      let leftIndex = copyarr.length / 2 - 1;
-      let rightIndex = copyarr.length / 2;
-      let rightNumber = newArr[rightIndex];
-      let leftNumber = newArr[leftIndex];
+    const copyArr = [...arr];
+    const newArr = copyArr.sort((a, b) => a - b);
+
+    copyArr.forEach(item => {
+      sum += item;
+    });
+
+    const average = sum / copyArr.length;
+
+    if (copyArr.length % 2 === 0) {
+      const leftIndex = copyArr.length / 2 - 1;
+      const rightIndex = copyArr.length / 2;
+      const rightNumber = newArr[rightIndex];
+      const leftNumber = newArr[leftIndex];
+
       if (Math.abs(average - leftNumber) > Math.abs(rightNumber - average)) {
         return rightNumber;
       }
+
       return leftNumber;
-    } else return newArr[Math.ceil(copyarr.length / 2)];
+    }
+
+    return newArr[Math.ceil(copyArr.length / 2)];
   },
 
-  findNumberOfUpperSequence: function(arr) {
+  findNumberOfUpperSequence(arr) {
     let numberOfUpperSequence = 1;
     let maxNumberOfUpperSequence = 1;
-    for (let i = 0; i < arr.length - 1; i++) {
+
+    for (let i = 0; i < arr.length - 1; i += 1) {
       if (arr[i] < arr[i + 1]) {
         numberOfUpperSequence += 1;
+
         if (numberOfUpperSequence > maxNumberOfUpperSequence) {
           maxNumberOfUpperSequence = numberOfUpperSequence;
         }
@@ -87,6 +82,7 @@ const arrayProcessingTool = {
     }
 
     return maxNumberOfUpperSequence;
-  }
+  },
 };
+
 export default arrayProcessingTool;

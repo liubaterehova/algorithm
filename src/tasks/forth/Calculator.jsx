@@ -1,47 +1,53 @@
-import React, { Component } from "react";
-import calculator from "./func";
-import "typeface-roboto";
-import { Input, Button, Card } from "@material-ui/core";
+import React, { Component } from 'react';
+import { Input, Button } from '@material-ui/core';
+import calculator from './func';
+import 'typeface-roboto';
 
 export default class Calculator extends Component {
   state = {
-    inputValue: "",
-    res: "answer",
-    click: "false"
+    inputValue: '',
+    result: 'answer',
+  };
+  typeOfOperation = value => {
+    if (value.includes('+')) {
+      return this.setState({ result: calculator.sum(value, '+') });
+    }
+
+    if (value.includes('-')) {
+      this.setState({ result: calculator.minus(value, '-') });
+    } else if (value.includes('/')) {
+      this.setState({ result: calculator.divide(value, '/') });
+    } else if (value.includes('*')) {
+      this.setState({ result: calculator.multiply(value, '*') });
+    } else { this.setState({ result: 'mistake' }); }
+
+    return null;
   };
 
+  handleOnChange = ({ target: { value } }) => {
+    this.setState({ inputValue: value });
+  }
+  handleOnClick = () => {
+    this.setState({ inputValue: '' });
+    this.typeOfOperation(this.state.inputValue);
+  }
   render() {
-    const typeOfOperation = value => {
-      if (value.includes("+")) {
-        return this.setState({ res: calculator.sum(value, "+") });
-      } else if (value.includes("-")) {
-        this.setState({ res: calculator.minus(value, "-") });
-      } else if (value.includes("/")) {
-        this.setState({ res: calculator.divide(value, "/") });
-      } else if (value.includes("*")) {
-        this.setState({ res: calculator.multiply(value, "*") });
-      }
-    };
-
     return (
       <div>
         <Input
           variant="contained"
-          placeholder="input expression"
+          placeholder="input expsion"
           color="primary"
-          onChange={e => this.setState({ inputValue: e.target.value })}
+          onChange={this.handleOnChange}
           value={this.state.inputValue}
-        ></Input>
+        />
         <Button
           color="primary"
-          onClick={e => {
-            this.setState({ inputValue: "" });
-            typeOfOperation(this.state.inputValue);
-          }}
+          onClick={this.handleOnClick}
         >
           COUNT
         </Button>
-        {this.state.res}
+        {this.state.result}
       </div>
     );
   }

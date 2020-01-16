@@ -4,11 +4,12 @@ import 'antd/dist/antd.css';
 import Arr from './tasks/first/Arr';
 import Data from './tasks/second/Data';
 import TextFormatter from './tasks/third/TextFormatter';
+import Calculator from './tasks/forth/Calculator';
 
 function App() {
   return (
     <div className="App">
-      <TextFormatter />
+      <Calculator />
     </div>
   );
 }

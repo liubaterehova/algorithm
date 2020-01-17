@@ -8,6 +8,7 @@ export default class Calculator extends Component {
     inputValue: '',
     result: 'answer',
   };
+
   typeOfOperation = value => {
     if (value.includes('+')) {
       return this.setState({ result: calculator.sum(value, '+') });
@@ -24,19 +25,15 @@ export default class Calculator extends Component {
     return null;
   };
 
-  // TODO: handleChange - not handleOnChange
-  handleOnChange = ({ target: { value } }) => {
+  handleChange = ({ target: { value } }) => {
     this.setState({ inputValue: value });
   }
 
-  // TODO: Same
-  // handleOnClick = () => {
-  //   this.setState({ inputValue: '' });
-  //   this.typeOfOperation(this.state.inputValue);
-  // }
-
-  hadneClick = () => {
+  handleOnClick = () => {
     const { inputValue } = this.state;
+
+    this.setState({ inputValue: '' });
+    this.typeOfOperation(inputValue);
 
     // eslint-disable-next-line no-eval
     this.setState({ result: eval(inputValue) });
@@ -49,12 +46,12 @@ export default class Calculator extends Component {
           variant="contained"
           placeholder="input expsion"
           color="primary"
-          onChange={this.handleOnChange}
+          onChange={this.handleChange}
           value={this.state.inputValue}
         />
         <Button
           color="primary"
-          onClick={this.hadneClick}
+          onClick={this.handleOnClick}
         >
           COUNT
         </Button>

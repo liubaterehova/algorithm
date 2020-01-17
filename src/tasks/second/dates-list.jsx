@@ -6,40 +6,24 @@ import './index.css';
 
 const { Search } = Input;
 
-// TODO:
-// export default class Data extends Component {
 export default class DatesList extends Component {
   state = {
     first: '',
     second: '',
     third: '',
-    forth: '',
+    fourth: '',
     fifth: '',
   };
 
-  // TODO: If you want to transfer a line, don't wrap it in ()
-  // onSearchFirst = value => (
-  //   this.setState({ first: formatData.formatFromString(value) })
-  // )
+  onSearchFirst = value => this.setState({ first: formatData.formatFromString(value) });
 
-  // TODO: Example
-  onSearchFirst = value =>
-    this.setState({ first: formatData.formatFromString(value) });
+  onSearchSecond = value => this.setState({ second: formatData.formatFromStringToMonth(value) });
 
-  onSearchSecond = value => (
-    this.setState({ second: formatData.formatFromStringToMonth(value) })
-  )
-  onSearchThird = value => (
-    this.setState({ third: formatData.formatInExample(value) })
-  )
-  onSearchForth = value => (
-    this.setState({ forth: formatData.formatWithHyphen(value) })
-  )
-  onSearchFifth = value => (
-    this.setState({
-      fifth: formatData.formatDateFromHyphen(value).fromNow(),
-    })
-  )
+  onSearchThird = value => this.setState({ third: formatData.formatStartsFromYear(value) });
+
+  onSearchForth = value => this.setState({ fourth: formatData.formatDateWithHyphen(value) });
+
+  onSearchFifth = value => this.setState({ fifth: formatData.formatDateFromHyphen(value).fromNow() });
 
   render() {
     return (
@@ -98,7 +82,7 @@ export default class DatesList extends Component {
               enterButton
             />
           </Col>
-          <Col span={6}>Result: {this.state.forth}</Col>
+          <Col span={6}>Result: {this.state.fourth}</Col>
         </Row>
 
         <Row type="flex">

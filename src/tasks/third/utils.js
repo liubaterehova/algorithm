@@ -5,57 +5,61 @@ const TYPE_FORMATS = {
   SENTENCE: 'sentence',
 };
 
-function maxLengthFunc(str, length) {
-  if (str.length > +length) {
-    return str.slice(0, +length);
-  }
+// function maxLengthFunc(str, length) {
+//   if (str.length > +length) {
+//     return str.slice(0, +length);
+//   }
 
-  return str;
-}
+//   return str;
+// }
 
-function maxNumberOfStrings(strs, number) {
+const maxLengthFunc = (str, length) =>
+  str.length > Number(length)
+    ? str.slice(0, +length)
+    : str;
+
+const maxNumberOfStrings = (strs, number) => {
   const arr = strs.split('\n');
 
-  if (arr.length > +number) {
-    return arr.slice(0, +number).join('\n');
-  }
+  return arr.length > Number(number)
+    ? arr.slice(0, Number(number)).join('\n')
+    : strs;
+};
 
-  return strs;
-}
-
-function typeWord(str) {
+const typeWord = (str) => {
   const words = str.split(' ');
   let newstr = '';
 
-  for (let i = 0; i < words.length; i += 1) {
-    newstr += `${words[i]}\n`;
-  }
+  words.forEach(item => {
+    newstr += `${item}\n`;
+  });
 
   return newstr;
-}
+};
 
-function typeSymbol(str) {
+const typeSymbol = (str) => {
   let newstr = '';
+  const arrFromStr = str.split();
 
-  for (let i = 0; i < str.length; i += 1) {
-    newstr += `${str[i]}\n`;
-  }
+  arrFromStr.forEach((item) => {
+    newstr += `${item}\n`;
+  });
 
   return newstr;
-}
+};
 
-function typeSentence(str) {
+const typeSentence = (str) => {
   const sentences = str.split('.');
   let newstr = '';
 
-  for (let i = 0; i < sentences.length; i += 1) {
-    newstr += `${sentences[i]}\n`;
-  }
+  sentences.forEach(item => {
+    newstr += `${item}\n`;
+  });
 
   return newstr;
-}
+};
 
-function typeFormat(str, type) {
+const typeFormat = (str, type) => {
   switch (type) {
     case TYPE_FORMATS.WORD:
     {
@@ -75,14 +79,14 @@ function typeFormat(str, type) {
     default:
       return str;
   }
-}
+};
 
-function allCheck({
+const checkAllFields = ({
   inputValue,
   format,
   maxLength,
   maxNumStr,
-}) {
+}) => {
   let str = typeFormat(inputValue, format);
 
   if (maxLength) {
@@ -94,10 +98,10 @@ function allCheck({
   }
 
   return str;
-}
+};
 
 export {
-  allCheck,
+  checkAllFields,
   maxNumberOfStrings,
   typeFormat,
   TYPE_FORMATS,

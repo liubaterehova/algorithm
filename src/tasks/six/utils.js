@@ -2,6 +2,7 @@ const convertFrom2 = (number) => {
   if (number.includes('0') && number.includes('1')) {
     let res = 0;
     const arrOfNum = number.split('');
+
     arrOfNum.forEach((num, index) => {
       res += num * 2 ** index;
     });
@@ -16,6 +17,10 @@ const convertFrom10 = (number) => {
   let str = '';
   let copyNum = number;
 
+  if (number === '1') {
+    return 1;
+  }
+
   while (copyNum !== 1) {
     if (copyNum % 2 === 0) {
       copyNum /= 2;
@@ -27,9 +32,10 @@ const convertFrom10 = (number) => {
   }
 
   str += '1';
-  const newStr = str.split('');
 
-  return newStr.reverse().join('');
+  return (str.length > 1)
+    ? str.split('').reverse().join('')
+    : str;
 };
 
 const converter = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
 
-import arrayProcessingTool from './func';
+import arrayProcessingTool from './utils';
 
 const TEST_ARRAYS = [
   [-1, 2, 3, -9],
@@ -12,6 +12,7 @@ const TEST_ARRAYS = [
   [1, 2, 3],
   [-1, -2, -3],
 ];
+
 const columns = [
   {
     title: 'Array',
@@ -45,7 +46,7 @@ const columns = [
   },
 ];
 
-const Arr = () => {
+const ArraysTable = () => {
   const data = TEST_ARRAYS.map((testArray, index) => ({
     key: `${index}`,
     name: `[${testArray}]`,
@@ -64,4 +65,4 @@ const Arr = () => {
   );
 };
 
-export default Arr;
+export default ArraysTable;

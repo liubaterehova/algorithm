@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Button } from '@material-ui/core';
-import calculator from './func';
+import calculator from './utils';
 import 'typeface-roboto';
 
 export default class Calculator extends Component {
@@ -24,13 +24,24 @@ export default class Calculator extends Component {
     return null;
   };
 
+  // TODO: handleChange - not handleOnChange
   handleOnChange = ({ target: { value } }) => {
     this.setState({ inputValue: value });
   }
-  handleOnClick = () => {
-    this.setState({ inputValue: '' });
-    this.typeOfOperation(this.state.inputValue);
+
+  // TODO: Same
+  // handleOnClick = () => {
+  //   this.setState({ inputValue: '' });
+  //   this.typeOfOperation(this.state.inputValue);
+  // }
+
+  hadneClick = () => {
+    const { inputValue } = this.state;
+
+    // eslint-disable-next-line no-eval
+    this.setState({ result: eval(inputValue) });
   }
+
   render() {
     return (
       <div>
@@ -43,7 +54,7 @@ export default class Calculator extends Component {
         />
         <Button
           color="primary"
-          onClick={this.handleOnClick}
+          onClick={this.hadneClick}
         >
           COUNT
         </Button>

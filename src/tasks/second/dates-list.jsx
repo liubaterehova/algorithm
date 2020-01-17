@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Row, Col, Input } from 'antd';
-import formatData from './func';
+
+import formatData from './utils';
 import './index.css';
 
 const { Search } = Input;
 
-export default class Data extends Component {
+// TODO:
+// export default class Data extends Component {
+export default class DatesList extends Component {
   state = {
     first: '',
     second: '',
@@ -14,9 +17,15 @@ export default class Data extends Component {
     fifth: '',
   };
 
-  onSearchFirst = value => (
-    this.setState({ first: formatData.formatFromString(value) })
-  )
+  // TODO: If you want to transfer a line, don't wrap it in ()
+  // onSearchFirst = value => (
+  //   this.setState({ first: formatData.formatFromString(value) })
+  // )
+
+  // TODO: Example
+  onSearchFirst = value =>
+    this.setState({ first: formatData.formatFromString(value) });
+
   onSearchSecond = value => (
     this.setState({ second: formatData.formatFromStringToMonth(value) })
   )
@@ -31,6 +40,7 @@ export default class Data extends Component {
       fifth: formatData.formatDateFromHyphen(value).fromNow(),
     })
   )
+
   render() {
     return (
       <div>

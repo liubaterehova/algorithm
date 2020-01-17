@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Menu, Dropdown, Input, Row, Col,
 } from 'antd';
-import { allCheck, TYPE_FORMATS } from './func';
+import { allCheck, TYPE_FORMATS } from './utils';
 
 const { TextArea } = Input;
 
@@ -58,6 +58,8 @@ export default class TextFormatter extends Component {
       }),
     }));
   }
+
+  // TODO: What is that ?)
   menu = (
     <Menu
       onClick={({ key }) => {
@@ -85,7 +87,7 @@ export default class TextFormatter extends Component {
           <Col span={6}>
             <TextArea
               placeholder="input"
-              onChange={this.handleChange}
+              onChange={this.handleChange} // TODO: #1
               value={this.state.inputValue}
               rows={4}
             />
@@ -96,7 +98,7 @@ export default class TextFormatter extends Component {
               <Col span={10}>
                 <Input
                   size="small"
-                  onChange={(e) => this.handleChangeMaxLength(e)}
+                  onChange={(e) => this.handleChangeMaxLength(e)} // TODO: #1
                 />
               </Col>
             </Row>
@@ -105,7 +107,7 @@ export default class TextFormatter extends Component {
               <Col span={10}>
                 <Input
                   size="small"
-                  onChange={(e) => this.handleChangeMaxNumOfStr(e)}
+                  onChange={(e) => this.handleChangeMaxNumOfStr(e)} // TODO: #1
                 />
               </Col>
             </Row>

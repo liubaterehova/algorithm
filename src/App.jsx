@@ -5,7 +5,7 @@ import ArraysTable from './tasks/first/arrays-table';
 import DatesList from './tasks/second/dates-list';
 import TextFormatter from './tasks/third/text-formatter';
 import Calculator from './tasks/fourth/calculator';
-import Converter from './tasks/six/converter';
+import Converter from './tasks/six/Converter';
 
 const App = () => (
   <div className="App">

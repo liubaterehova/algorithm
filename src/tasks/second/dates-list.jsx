@@ -7,6 +7,7 @@ import './index.css';
 const { Search } = Input;
 
 export default class DatesList extends Component {
+  // TODO: names...
   state = {
     first: '',
     second: '',

@@ -28,7 +28,7 @@ export default class TextFormatter extends Component {
     format: 'select',
     maxLength: null,
     maxNumStr: null,
-    res: '',
+    res: '', // TODO: All 'res' rename to 'result'
   };
 
   handleChangeTextArea = ({ target: { value: inputValue } }) => {

@@ -4,7 +4,7 @@ import { checkAllFields, TYPE_FORMATS } from './utils';
 
 const MenuHyphenation = (changeState, state) => (
   <Menu
-    onClick={({ key }) => {
+    onClick={({ key }) => { // TODO: function inside component ?
       changeState(() => ({
         format: key,
         res: checkAllFields({

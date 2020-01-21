@@ -5,6 +5,7 @@ const TYPE_FORMATS = {
   SENTENCE: 'sentence',
 };
 
+// TODO: If it not needed, it should be remove
 // function maxLengthFunc(str, length) {
 //   if (str.length > +length) {
 //     return str.slice(0, +length);
@@ -20,9 +21,10 @@ const maxLengthFunc = (str, length) =>
 
 const maxNumberOfStrings = (strs, number) => {
   const arr = strs.split('\n');
+  const toNumber = Number(number);
 
-  return arr.length > Number(number)
-    ? arr.slice(0, Number(number)).join('\n')
+  return arr.length > toNumber
+    ? arr.slice(0, toNumber).join('\n')
     : strs;
 };
 

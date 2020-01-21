@@ -7,19 +7,20 @@ export default class Converter extends Component {
   state = {
     firstInput: '',
     secondInput: '',
-    resFirstInput: '',
-    resSecondInput: '',
+    resFirstInput: '', // TODO: What is res ?
+    resSecondInput: '', // TODO: What is res ?
   };
 
   handleClickFirstInput = () => {
-    if (!this.state.firstInput) return;
+    if (!this.state.firstInput) return; // Please, move to a new line after any statement
+
     this.setState(prevState => ({
       resFirstInput: converter.convertFrom2To10(prevState.firstInput),
     }));
   }
 
   handleClickSecInput = () => {
-    if (!this.state.secondInput) return;
+    if (!this.state.secondInput) return; // TODO: Please, move to a new line after any statement
     this.setState(prevState => ({
       resSecondInput: converter.convertFrom10To2(prevState.secondInput),
     }));

@@ -15,7 +15,7 @@ const TYPE_FORMATS = {
 
 const maxLengthFunc = (str, length) =>
   str.length > Number(length)
-    ? str.slice(0, +length)
+    ? str.slice(0, Number(length))
     : str;
 
 const maxNumberOfStrings = (strs, number) => {

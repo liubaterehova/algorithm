@@ -9,7 +9,7 @@ import Converter from './tasks/six/converter';
 
 const App = () => (
   <div className="App">
-    <Converter />
+    <TextFormatter />
   </div>
 );
 

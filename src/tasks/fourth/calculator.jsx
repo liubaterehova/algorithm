@@ -20,7 +20,9 @@ export default class Calculator extends Component {
       this.setState({ result: calculator.divide(value, '/') });
     } else if (value.includes('*')) {
       this.setState({ result: calculator.multiply(value, '*') });
-    } else { this.setState({ result: 'mistake' }); }
+    } else {
+      this.setState({ result: 'mistake' });
+    }
 
     return null;
   };
@@ -32,14 +34,17 @@ export default class Calculator extends Component {
   handleOnClick = () => {
     const { inputValue } = this.state;
 
-    this.setState({ inputValue: '' });
+    // TODO: Why do you use this setState ?
+    // this.setState({ inputValue: '' });
     this.typeOfOperation(inputValue);
 
     // eslint-disable-next-line no-eval
-    this.setState({ result: eval(inputValue) });
+    // this.setState({ result: eval(inputValue) });
   }
 
   render() {
+    const { inputValue, result } = this.state;
+
     return (
       <div>
         <Input
@@ -47,7 +52,7 @@ export default class Calculator extends Component {
           placeholder="input expsion"
           color="primary"
           onChange={this.handleChange}
-          value={this.state.inputValue}
+          value={inputValue}
         />
         <Button
           color="primary"
@@ -55,7 +60,7 @@ export default class Calculator extends Component {
         >
           COUNT
         </Button>
-        {this.state.result}
+        {result}
       </div>
     );
   }

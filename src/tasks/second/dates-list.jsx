@@ -8,22 +8,22 @@ const { Search } = Input;
 
 export default class DatesList extends Component {
   state = {
-    first: '',
-    second: '',
-    third: '',
-    fourth: '',
-    fifth: '',
+    firstInput: '',
+    secondInput: '',
+    thirdInput: '',
+    fourthInput: '',
+    fifthInput: '',
   };
 
-  onSearchFirst = value => this.setState({ first: formatData.formatFromString(value) });
+  onSearchFirst = value => this.setState({ firstInput: formatData.formatFromString(value) });
 
-  onSearchSecond = value => this.setState({ second: formatData.formatFromStringToMonth(value) });
+  onSearchSecond = value => this.setState({ secondInput: formatData.formatFromStringToMonth(value) });
 
-  onSearchThird = value => this.setState({ third: formatData.formatStartsFromYear(value) });
+  onSearchThird = value => this.setState({ thirdInput: formatData.formatStartsFromYear(value) });
 
-  onSearchForth = value => this.setState({ fourth: formatData.formatDateWithHyphen(value) });
+  onSearchForth = value => this.setState({ fourthInput: formatData.formatDateWithHyphen(value) });
 
-  onSearchFifth = value => this.setState({ fifth: formatData.formatDateFromHyphen(value).fromNow() });
+  onSearchFifth = value => this.setState({ fifthInput: formatData.formatDateFromHyphen(value).fromNow() });
 
   render() {
     return (
@@ -39,7 +39,7 @@ export default class DatesList extends Component {
               enterButton
             />
           </Col>
-          <Col span={6}>Result: {this.state.first}</Col>
+          <Col span={6}>Result: {this.state.firstInput}</Col>
         </Row>
 
         <Row type="flex">
@@ -53,7 +53,7 @@ export default class DatesList extends Component {
               enterButton
             />
           </Col>
-          <Col span={6}>Result: {this.state.second}</Col>
+          <Col span={6}>Result: {this.state.secondInput}</Col>
         </Row>
 
         <Row type="flex">
@@ -67,7 +67,7 @@ export default class DatesList extends Component {
               enterButton
             />
           </Col>
-          <Col span={6}>Result: {this.state.third}</Col>
+          <Col span={6}>Result: {this.state.thirdInput}</Col>
         </Row>
 
         <Row type="flex">
@@ -82,7 +82,7 @@ export default class DatesList extends Component {
               enterButton
             />
           </Col>
-          <Col span={6}>Result: {this.state.fourth}</Col>
+          <Col span={6}>Result: {this.state.fourthInput}</Col>
         </Row>
 
         <Row type="flex">
@@ -96,7 +96,7 @@ export default class DatesList extends Component {
               enterButton
             />
           </Col>
-          <Col span={6}>Result: {this.state.fifth}</Col>
+          <Col span={6}>Result: {this.state.fifthInput}</Col>
         </Row>
       </div>
     );

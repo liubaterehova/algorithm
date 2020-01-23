@@ -1,3 +1,4 @@
+
 const TYPE_FORMATS = {
   NONE: 'none',
   SYMBOL: 'symbol',
@@ -5,40 +6,11 @@ const TYPE_FORMATS = {
   SENTENCE: 'sentence',
 };
 
-// TODO: If it not needed, it should be remove
-// function maxLengthFunc(str, length) {
-//   if (str.length > +length) {
-//     return str.slice(0, +length);
-//   }
-
-//   return str;
-// }
-const countEnters = (str) => {
-  let numberOfEnters = 0;
-
-  if (str.includes('\n')) {
-    let pos = -1;
-
-    while ((pos = str.indexOf('\n', pos + 1)) !== -1) {
-      numberOfEnters += 1;
-    }
-
-    return numberOfEnters;
-  }
-
-  return 0;
-};
-
-const maxLengthFunc = (str, length) => {
-  debugger;
-  const strLength = str.length;
-  const numberOfEnters = countEnters(str);
-  const lengthWithEnters = Number(length) + numberOfEnters;
-
-  return strLength > lengthWithEnters
-    ? str.slice(0, lengthWithEnters)
-    : str;
-};
+const maxLengthFunc = (str, length) => (
+  str.length > Number(length)
+    ? str.slice(0, Number(length))
+    : str
+);
 
 const maxNumberOfStrings = (strs, number) => {
   const arr = strs.split('\n');
@@ -61,24 +33,10 @@ const typeWord = (str) => {
 };
 
 const typeSymbol = (str) => {
-  debugger;
   let newstr = '';
-  const numberOfEnters = countEnters(str);
-
   const arrFromStr = str.split('');
-  const newArr = [...arrFromStr];
 
-  if (arrFromStr.includes('\n')) {
-    arrFromStr.forEach((letter, index) => {
-      if (letter === '\n') {
-        newArr.splice(index, 1);
-      }
-      index --;
-    });
-  }
-  debugger;
-
-  newArr.forEach((item) => {
+  arrFromStr.forEach((item) => {
     newstr += `${item}\n`;
   });
 
@@ -123,15 +81,8 @@ const checkAllFields = ({
   format,
   maxLength,
   maxNumStr,
-  result,
 }) => {
-  debugger;
-
-  let str = (format !== 'format' && !maxLength && !maxNumStr) ? typeFormat(inputValue, format) : typeFormat(result, format);
-
-  // str = result
-  //   ? typeFormat(result, format)
-  //   : typeFormat(inputValue, format);
+  let str = inputValue;
 
   if (maxLength) {
     str = maxLengthFunc(str, maxLength);
@@ -140,6 +91,8 @@ const checkAllFields = ({
   if (maxNumStr) {
     str = maxNumberOfStrings(str, maxNumStr);
   }
+
+  str = typeFormat(str, format);
 
   return str;
 };

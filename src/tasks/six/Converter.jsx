@@ -7,22 +7,23 @@ export default class Converter extends Component {
   state = {
     firstInput: '',
     secondInput: '',
-    resFirstInput: '', // TODO: What is res ?
-    resSecondInput: '', // TODO: What is res ?
+    resultofFirstInput: '',
+    resultofSecondInput: '',
   };
 
   handleClickFirstInput = () => {
-    if (!this.state.firstInput) return; // Please, move to a new line after any statement
+    if (!this.state.firstInput) return;
 
     this.setState(prevState => ({
-      resFirstInput: converter.convertFrom2To10(prevState.firstInput),
+      resultofFirstInput: converter.convertFromBinaryToDecimal(prevState.firstInput),
     }));
   }
 
-  handleClickSecInput = () => {
-    if (!this.state.secondInput) return; // TODO: Please, move to a new line after any statement
+  handleClickSecondInput = () => {
+    if (!this.state.secondInput) return;
+
     this.setState(prevState => ({
-      resSecondInput: converter.convertFrom10To2(prevState.secondInput),
+      resultofSecondInput: converter.convertFromDecimalToBinary(prevState.secondInput),
     }));
   }
 
@@ -30,7 +31,7 @@ export default class Converter extends Component {
     this.setState({ firstInput: value });
   }
 
-  handleOnChangeSecInput = ({ target: { value } }) => {
+  handleOnChangeSecondInput = ({ target: { value } }) => {
     this.setState({ secondInput: value });
   }
 
@@ -53,22 +54,22 @@ export default class Converter extends Component {
             {' '}
             FROM 2 TO 10
           </Button>
-          <Input placeholder="answer" value={this.state.resFirstInput}>
+          <Input placeholder="answer" value={this.state.resultofFirstInput}>
             {' '}
           </Input>
         </div>
         <div>
           <Input
             placeholder="enter number"
-            onChange={this.handleOnChangeSecInput}
+            onChange={this.handleOnChangeSecondInput}
           >
             {' '}
           </Input>
-          <Button color="primary" variant="outlined" onClick={this.handleClickSecInput}>
+          <Button color="primary" variant="outlined" onClick={this.handleClickSecondInput}>
             {' '}
             FROM 10 TO 2
           </Button>
-          <Input placeholder="answer" value={this.state.resSecondInput}>
+          <Input placeholder="answer" value={this.state.resultofSecondInput}>
             {' '}
           </Input>
         </div>

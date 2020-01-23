@@ -1,50 +1,48 @@
-// TODO: What ???)))
-// May be "convertFromBinaryToDecimal" would be better ?)
-const convertFrom2 = (number) => {
-  if (number.includes('0') && number.includes('1')) {
-    let res = 0; // Res again ?)
-    const arrOfNum = number.split('');
+const containOnly1and0 = (number) => number === '0' || number === '1';
 
-    arrOfNum.forEach((num, index) => {
-      res += num * 2 ** index;
-    });
+const convertFromBinaryToDecimal = (number) => {
+  let result = 0;
+  const arrOfNum = number.split('');
 
-    return res; // Same
-  }
+  if (!arrOfNum.every(containOnly1and0)) return 'mistake';
 
-  return 'mistake';
+  arrOfNum.forEach((num, index) => {
+    result += num * 2 ** index;
+  });
+
+  return result;
 };
 
-// TODO: Same)
-const convertFrom10 = (number) => {
+const convertFromDecimalToBinary = (number) => {
   let str = '';
-  let copyNum = number;
+  let copyNumber = number;
 
   if (number === '1') {
     return 1;
   }
 
-  while (copyNum !== 1) {
-    if (copyNum % 2 === 0) {
-      copyNum /= 2;
+  if (!(number.match('^[0-9]+$'))) return 'mistake';
+
+  while (copyNumber !== 1) {
+    if (copyNumber % 2 === 0) {
+      copyNumber /= 2;
       str += '0';
     } else {
-      copyNum = Math.floor(copyNum / 2);
+      copyNumber = Math.floor(copyNumber / 2);
       str += '1';
     }
   }
 
   str += '1';
 
-  return (str.length > 1) // TODO: Why do you wrap that in brackets ?
+  return str.length > 1
     ? str.split('').reverse().join('')
     : str;
 };
 
 const converter = {
-  // convertFrom2To10: (number) => convertFrom2(number), // TODO: It's not necessary
-  convertFrom2To10: convertFrom2,
-  convertFrom10To2: convertFrom10,
+  convertFromBinaryToDecimal,
+  convertFromDecimalToBinary,
 };
 
 export default converter;

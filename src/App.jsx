@@ -5,11 +5,11 @@ import ArraysTable from './tasks/first/arrays-table';
 import DatesList from './tasks/second/dates-list';
 import TextFormatter from './tasks/third/text-formatter';
 import Calculator from './tasks/fourth/calculator';
-import Converter from './tasks/six/Converter';
+import Converter from './tasks/six/converter';
 
 const App = () => (
   <div className="App">
-    <Converter />
+    <TextFormatter />
   </div>
 );
 

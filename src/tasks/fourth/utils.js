@@ -1,8 +1,4 @@
 function numbersFromStr(str, operator) {
-  // TODO: We can use destructurisation
-  // const arrofStr = str.split(operator);
-  // const firstNumber = Number(arrofStr[0]);
-  // const secondNumber = Number(arrofStr[1]);
 
   const [firstNumber, secondNumber] = str.split(operator);
 

@@ -28,13 +28,13 @@ export default class TextFormatter extends Component {
     format: 'select',
     maxLength: null,
     maxNumStr: null,
-    res: '', // TODO: All 'res' rename to 'result'
+    result: '',
   };
 
   handleChangeTextArea = ({ target: { value: inputValue } }) => {
     this.setState(prevState => ({
       inputValue,
-      res: checkAllFields({
+      result: checkAllFields({
         ...prevState,
         inputValue,
       }),
@@ -44,7 +44,7 @@ export default class TextFormatter extends Component {
   handleChangeMaxLength = ({ target: { value } }) => {
     this.setState((prevState) => ({
       maxLength: value,
-      res: checkAllFields({
+      result: checkAllFields({
         ...prevState,
         maxLength: value,
       }),
@@ -54,7 +54,7 @@ export default class TextFormatter extends Component {
   handleChangeMaxNumOfStr = ({ target: { value } }) =>
     this.setState((prevState) => ({
       maxNumStr: value,
-      res: checkAllFields({
+      result: checkAllFields({
         ...prevState,
         maxNumStr: value,
       }),
@@ -108,7 +108,7 @@ export default class TextFormatter extends Component {
           <Col span={6}>
             <TextArea
               placeholder="Result:"
-              value={this.state.res}
+              value={this.state.result}
               rows={4}
             />
           </Col>

@@ -20,7 +20,6 @@ export default class Calculator extends Component {
       this.setState({ result: calculator.divide(value, '/') });
     } else if (value.includes('*')) {
       this.setState({ result: calculator.multiply(value, '*') });
-    // } else { this.setState({ result: 'mistake' }); } // TODO: please, don't write like that
     } else {
       this.setState({ result: 'mistake' });
     }
@@ -54,7 +53,6 @@ export default class Calculator extends Component {
           color="primary"
           onChange={this.handleChange}
           value={inputValue}
-          // value={this.state.inputValue} // TODO: Please, use destructurisation
         />
         <Button
           color="primary"
@@ -62,7 +60,6 @@ export default class Calculator extends Component {
         >
           COUNT
         </Button>
-        {/* {this.state.result} TODO: */}
         {result}
       </div>
     );

@@ -34,8 +34,6 @@ export default class Calculator extends Component {
   handleOnClick = () => {
     const { inputValue } = this.state;
 
-    // TODO: Why do you use this setState ?
-    // this.setState({ inputValue: '' });
     this.typeOfOperation(inputValue);
 
     // eslint-disable-next-line no-eval

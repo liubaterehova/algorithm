@@ -13,11 +13,32 @@ const TYPE_FORMATS = {
 
 //   return str;
 // }
+const countEnters = (str) => {
+  let numberOfEnters = 0;
 
-const maxLengthFunc = (str, length) =>
-  str.length > Number(length)
-    ? str.slice(0, +length)
+  if (str.includes('\n')) {
+    let pos = -1;
+
+    while ((pos = str.indexOf('\n', pos + 1)) !== -1) {
+      numberOfEnters += 1;
+    }
+
+    return numberOfEnters;
+  }
+
+  return 0;
+};
+
+const maxLengthFunc = (str, length) => {
+  debugger;
+  const strLength = str.length;
+  const numberOfEnters = countEnters(str);
+  const lengthWithEnters = Number(length) + numberOfEnters;
+
+  return strLength > lengthWithEnters
+    ? str.slice(0, lengthWithEnters)
     : str;
+};
 
 const maxNumberOfStrings = (strs, number) => {
   const arr = strs.split('\n');
@@ -40,10 +61,24 @@ const typeWord = (str) => {
 };
 
 const typeSymbol = (str) => {
+  debugger;
   let newstr = '';
-  const arrFromStr = str.split();
+  const numberOfEnters = countEnters(str);
 
-  arrFromStr.forEach((item) => {
+  const arrFromStr = str.split('');
+  const newArr = [...arrFromStr];
+
+  if (arrFromStr.includes('\n')) {
+    arrFromStr.forEach((letter, index) => {
+      if (letter === '\n') {
+        newArr.splice(index, 1);
+      }
+      index --;
+    });
+  }
+  debugger;
+
+  newArr.forEach((item) => {
     newstr += `${item}\n`;
   });
 
@@ -88,8 +123,15 @@ const checkAllFields = ({
   format,
   maxLength,
   maxNumStr,
+  result,
 }) => {
-  let str = typeFormat(inputValue, format);
+  debugger;
+
+  let str = (format !== 'format' && !maxLength && !maxNumStr) ? typeFormat(inputValue, format) : typeFormat(result, format);
+
+  // str = result
+  //   ? typeFormat(result, format)
+  //   : typeFormat(inputValue, format);
 
   if (maxLength) {
     str = maxLengthFunc(str, maxLength);
@@ -102,9 +144,22 @@ const checkAllFields = ({
   return str;
 };
 
+const changeTypeFormat = (changeState, state, event) => {
+  const { key } = event;
+
+  changeState(() => ({
+    format: key,
+    result: checkAllFields({
+      ...state,
+      format: key,
+    }),
+  }));
+};
+
 export {
   checkAllFields,
   maxNumberOfStrings,
   typeFormat,
   TYPE_FORMATS,
+  changeTypeFormat,
 };

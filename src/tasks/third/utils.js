@@ -1,4 +1,3 @@
-
 const TYPE_FORMATS = {
   NONE: 'none',
   SYMBOL: 'symbol',
@@ -6,18 +5,23 @@ const TYPE_FORMATS = {
   SENTENCE: 'sentence',
 };
 
-const maxLengthFunc = (str, length) => (
-  str.length > Number(length)
-    ? str.slice(0, Number(length))
-    : str
-);
+// function maxLengthFunc(str, length) {
+//   if (str.length > +length) {
+//     return str.slice(0, +length);
+//   }
+
+//   return str;
+// }
+
+const maxLengthFunc = (str, length) => (str.length > Number(length)
+  ? str.slice(0, Number(length))
+  : str);
 
 const maxNumberOfStrings = (strs, number) => {
   const arr = strs.split('\n');
-  const toNumber = Number(number);
 
-  return arr.length > toNumber
-    ? arr.slice(0, toNumber).join('\n')
+  return arr.length > Number(number)
+    ? arr.slice(0, Number(number)).join('\n')
     : strs;
 };
 
@@ -25,7 +29,7 @@ const typeWord = (str) => {
   const words = str.split(' ');
   let newstr = '';
 
-  words.forEach(item => {
+  words.forEach((item) => {
     newstr += `${item}\n`;
   });
 
@@ -34,7 +38,7 @@ const typeWord = (str) => {
 
 const typeSymbol = (str) => {
   let newstr = '';
-  const arrFromStr = str.split('');
+  const arrFromStr = str.split();
 
   arrFromStr.forEach((item) => {
     newstr += `${item}\n`;
@@ -47,7 +51,7 @@ const typeSentence = (str) => {
   const sentences = str.split('.');
   let newstr = '';
 
-  sentences.forEach(item => {
+  sentences.forEach((item) => {
     newstr += `${item}\n`;
   });
 
@@ -82,7 +86,7 @@ const checkAllFields = ({
   maxLength,
   maxNumStr,
 }) => {
-  let str = inputValue;
+  let str = typeFormat(inputValue, format);
 
   if (maxLength) {
     str = maxLengthFunc(str, maxLength);
@@ -92,21 +96,7 @@ const checkAllFields = ({
     str = maxNumberOfStrings(str, maxNumStr);
   }
 
-  str = typeFormat(str, format);
-
   return str;
-};
-
-const changeTypeFormat = (changeState, state, event) => {
-  const { key } = event;
-
-  changeState(() => ({
-    format: key,
-    result: checkAllFields({
-      ...state,
-      format: key,
-    }),
-  }));
 };
 
 export {
@@ -114,5 +104,4 @@ export {
   maxNumberOfStrings,
   typeFormat,
   TYPE_FORMATS,
-  changeTypeFormat,
 };

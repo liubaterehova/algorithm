@@ -1,0 +1,15 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/react"
+  ],
+  "plugins": [
+    "add-module-exports",
+    [
+      "transform-replace-object-assign",
+      {
+        "moduleSpecifier": "object.assign"
+      }
+    ]
+  ]
+}

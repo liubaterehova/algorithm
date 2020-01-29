@@ -1,11 +1,9 @@
 function numbersFromStr(str, operator) {
+  const arrofStr = str.split(operator);
+  const firstNumber = Number(arrofStr[0]);
+  const secondNumber = Number(arrofStr[1]);
 
-  const [firstNumber, secondNumber] = str.split(operator);
-
-  return {
-    firstNumber: Number(firstNumber),
-    secondNumber: Number(secondNumber),
-  };
+  return { firstNumber, secondNumber };
 }
 
 const calculator = {

@@ -18,8 +18,7 @@ const LIST_OF_MONTHES = [
 ];
 
 const formatDate = {
-  formatFromString: str =>
-    `${str[0]}${str[1]}.${str[2]}${str[3]}.${str.slice(4)}`,
+  formatFromString: (str) => `${str[0]}${str[1]}.${str[2]}${str[3]}.${str.slice(4)}`,
 
   formatFromStringToMonth(str) {
     const day = `${str[0]}${str[1]}`;

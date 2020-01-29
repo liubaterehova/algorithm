@@ -23,18 +23,20 @@ function formatToName(key) {
 }
 
 export default class TextFormatter extends Component {
-  state = {
-    inputValue: '',
-    format: 'select',
-    maxLength: null,
-    maxNumStr: null,
-    result: '',
-  };
+   
+    state = {
+      inputValue: '',
+      format: 'select',
+      maxLength: null,
+      maxNumStr: null,
+      res: '',
+    };
+  
 
   handleChangeTextArea = ({ target: { value: inputValue } }) => {
     this.setState(prevState => ({
       inputValue,
-      result: checkAllFields({
+      res: checkAllFields({
         ...prevState,
         inputValue,
       }),
@@ -44,7 +46,7 @@ export default class TextFormatter extends Component {
   handleChangeMaxLength = ({ target: { value } }) => {
     this.setState((prevState) => ({
       maxLength: value,
-      result: checkAllFields({
+      res: checkAllFields({
         ...prevState,
         maxLength: value,
       }),
@@ -54,7 +56,7 @@ export default class TextFormatter extends Component {
   handleChangeMaxNumOfStr = ({ target: { value } }) =>
     this.setState((prevState) => ({
       maxNumStr: value,
-      result: checkAllFields({
+      res: checkAllFields({
         ...prevState,
         maxNumStr: value,
       }),
@@ -108,7 +110,7 @@ export default class TextFormatter extends Component {
           <Col span={6}>
             <TextArea
               placeholder="Result:"
-              value={this.state.result}
+              value={this.state.res}
               rows={4}
             />
           </Col>

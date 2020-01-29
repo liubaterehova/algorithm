@@ -1,10 +1,18 @@
 import React from 'react';
 import { Menu } from 'antd';
-import { TYPE_FORMATS, changeTypeFormat } from './utils';
+import { checkAllFields, TYPE_FORMATS } from './utils';
 
 const MenuHyphenation = (changeState, state) => (
   <Menu
-    onClick={(e) => changeTypeFormat(changeState, state, e)}
+    onClick={({ key }) => {
+      changeState(() => ({
+        format: key,
+        res: checkAllFields({
+          ...state,
+          format: key,
+        }),
+      }));
+    }}
   >
     <Menu.Item key={TYPE_FORMATS.NONE}>переносов нет</Menu.Item>
     <Menu.Item key={TYPE_FORMATS.SYMBOL}>перенос по символу</Menu.Item>

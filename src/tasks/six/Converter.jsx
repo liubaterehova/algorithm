@@ -4,26 +4,27 @@ import converter from './utils';
 import './index.css';
 
 export default class Converter extends Component {
-  state = {
-    firstInput: '',
-    secondInput: '',
-    resultofFirstInput: '',
-    resultofSecondInput: '',
-  };
+ 
+    
+    state = {
+      firstInput: '',
+      secondInput: '',
+      resFirstInput: '',
+      resSecondInput: '',
+    };
+  
 
   handleClickFirstInput = () => {
     if (!this.state.firstInput) return;
-
     this.setState(prevState => ({
-      resultofFirstInput: converter.convertFromBinaryToDecimal(prevState.firstInput),
+      resFirstInput: converter.convertFrom2To10(prevState.firstInput),
     }));
   }
 
-  handleClickSecondInput = () => {
+  handleClickSecInput = () => {
     if (!this.state.secondInput) return;
-
     this.setState(prevState => ({
-      resultofSecondInput: converter.convertFromDecimalToBinary(prevState.secondInput),
+      resSecondInput: converter.convertFrom10To2(prevState.secondInput),
     }));
   }
 
@@ -31,7 +32,7 @@ export default class Converter extends Component {
     this.setState({ firstInput: value });
   }
 
-  handleOnChangeSecondInput = ({ target: { value } }) => {
+  handleOnChangeSecInput = ({ target: { value } }) => {
     this.setState({ secondInput: value });
   }
 
@@ -54,22 +55,22 @@ export default class Converter extends Component {
             {' '}
             FROM 2 TO 10
           </Button>
-          <Input placeholder="answer" value={this.state.resultofFirstInput}>
+          <Input placeholder="answer" value={this.state.resFirstInput}>
             {' '}
           </Input>
         </div>
         <div>
           <Input
             placeholder="enter number"
-            onChange={this.handleOnChangeSecondInput}
+            onChange={this.handleOnChangeSecInput}
           >
             {' '}
           </Input>
-          <Button color="primary" variant="outlined" onClick={this.handleClickSecondInput}>
+          <Button color="primary" variant="outlined" onClick={this.handleClickSecInput}>
             {' '}
             FROM 10 TO 2
           </Button>
-          <Input placeholder="answer" value={this.state.resultofSecondInput}>
+          <Input placeholder="answer" value={this.state.resSecondInput}>
             {' '}
           </Input>
         </div>

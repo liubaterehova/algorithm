@@ -1,48 +1,46 @@
-const containOnly1and0 = (number) => number === '0' || number === '1';
+const convertFrom2 = (number) => {
+  if (number.includes('0') && number.includes('1')) {
+    let res = 0;
+    const arrOfNum = number.split('');
 
-const convertFromBinaryToDecimal = (number) => {
-  let result = 0;
-  const arrOfNum = number.split('');
+    arrOfNum.forEach((num, index) => {
+      res += num * 2 ** index;
+    });
 
-  if (!arrOfNum.every(containOnly1and0)) return 'mistake';
+    return res;
+  }
 
-  arrOfNum.forEach((num, index) => {
-    result += num * 2 ** index;
-  });
-
-  return result;
+  return 'mistake';
 };
 
-const convertFromDecimalToBinary = (number) => {
+const convertFrom10 = (number) => {
   let str = '';
-  let copyNumber = number;
+  let copyNum = number;
 
   if (number === '1') {
     return 1;
   }
 
-  if (!(number.match('^[0-9]+$'))) return 'mistake';
-
-  while (copyNumber !== 1) {
-    if (copyNumber % 2 === 0) {
-      copyNumber /= 2;
+  while (copyNum !== 1) {
+    if (copyNum % 2 === 0) {
+      copyNum /= 2;
       str += '0';
     } else {
-      copyNumber = Math.floor(copyNumber / 2);
+      copyNum = Math.floor(copyNum / 2);
       str += '1';
     }
   }
 
   str += '1';
 
-  return str.length > 1
+  return (str.length > 1)
     ? str.split('').reverse().join('')
     : str;
 };
 
 const converter = {
-  convertFromBinaryToDecimal,
-  convertFromDecimalToBinary,
+  convertFrom2To10: (number) => convertFrom2(number),
+  convertFrom10To2: (number) => convertFrom10(number),
 };
 
 export default converter;
